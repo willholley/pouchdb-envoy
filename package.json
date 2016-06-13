@@ -1,24 +1,23 @@
 {
-  "name": "pouchdb-plugin-seed",
+  "name": "pouchdb-envoy",
   "version": "0.1.0",
-  "description": "PouchDB Plugin Seed project",
+  "description": "Custom PouchDB replicator for Cloudant Envoy",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/pouchdb/plugin-seed.git"
+    "url": "git://github.com/glynnbird/pouchdb-envoy.git"
   },
   "keywords": [
     "pouch",
     "pouchdb",
     "plugin",
-    "seed",
     "couch",
     "couchdb"
   ],
-  "author": "",
+  "author": "Glynn Bird <glynn.bird@gmail.com>",
   "license": "Apache",
   "bugs": {
-    "url": "https://github.com/pouchdb/plugin-seed/issues"
+    "url": "https://github.com/glynnbird/pouchdb-envoy/issues"
   },
   "scripts": {
     "test-node": "TEST_DB=testdb,http://localhost:5984/testdb istanbul test ./node_modules/mocha/bin/_mocha test/test.js",
@@ -26,8 +25,8 @@
     "jshint": "jshint -c .jshintrc *.js test/test.js",
     "test": "npm run jshint && ./bin/run-test.sh",
     "build": "mkdirp dist && npm run browserify && npm run min",
-    "browserify": "browserify index.js | ./bin/es3ify.js | derequire > dist/pouchdb.mypluginname.js",
-    "min": "uglifyjs dist/pouchdb.mypluginname.js -mc > dist/pouchdb.mypluginname.min.js",
+    "browserify": "browserify index.js | ./bin/es3ify.js | derequire > dist/pouchdb.envoy.js",
+    "min": "uglifyjs dist/pouchdb.envoy.js -mc > dist/pouchdb.envoy.min.js",
     "dev": "browserify test/test.js > test/test-bundle.js && npm run dev-server",
     "dev-server": "./bin/dev-server.js",
     "coverage": "npm test --coverage && istanbul check-coverage --lines 100 --function 100 --statements 100 --branches 100"

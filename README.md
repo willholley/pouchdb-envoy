@@ -1,43 +1,29 @@
-PouchDB Plugin Seed
+PouchDB Plugin - pouchdb-envoy
 =====
 
 [![Build Status](https://travis-ci.org/pouchdb/plugin-seed.svg)](https://travis-ci.org/pouchdb/plugin-seed)
 
-Fork this project to build your first PouchDB plugin.  It contains everything you need to test in Node, WebSQL, and IndexedDB.  It also includes a Travis config file so you
-can automatically run the tests in Travis.
+A custom replicator for use with Cloudant envoy. Instead of doing:
+
+```js
+  var local = new PouchDB("local");
+  local.replicate.from("http://localhost:8000");
+```
+
+do
+
+```js
+  var local = new PouchDB("local");
+  local.pull("http://localhost:8000");
+```
 
 Building
 ----
     npm install
     npm run build
 
-Your plugin is now located at `dist/pouchdb.mypluginname.js` and `dist/pouchdb.mypluginname.min.js` and is ready for distribution.
+Your plugin is now located at `dist/pouchdb.pouchdb-envoy.js` and `dist/pouchdb.pouchdb-envoy.min.js` and is ready for distribution.
 
-Getting Started
--------
-
-**First**, change the `name` in `package.json` to whatever you want to call your plugin.  Change the `build` script so that it writes to the desired filename (e.g. `pouchdb.mypluginname.js`).  Also, change the authors, description, git repo, etc.
-
-**Next**, modify the `index.js` to do whatever you want your plugin to do.  Right now it just adds a `pouch.sayHello()` function that says hello:
-
-```js
-exports.sayHello = utils.toPromise(function (callback) {
-  callback(null, 'hello');
-});
-```
-
-**Optionally**, you can add some tests in `tests/test.js`. These tests will be run both in the local database and a remote CouchDB, which is expected to be running at localhost:5984 in "Admin party" mode.
-
-The sample test is:
-
-```js
-
-it('should say hello', function () {
-  return db.sayHello().then(function (response) {
-    response.should.equal('hello');
-  });
-});
-```
 
 Testing
 ----
@@ -86,18 +72,18 @@ To use this plugin, include it after `pouchdb.js` in your HTML page:
 
 ```html
 <script src="pouchdb.js"></script>
-<script src="pouchdb.mypluginname.js"></script>
+<script src="pouchdb.envoy.js"></script>
 ```
 
 Or to use it in Node.js, just npm install it:
 
 ```
-npm install pouchdb-myplugin
+npm install pouchdb-envoy
 ```
 
 And then attach it to the `PouchDB` object:
 
 ```js
 var PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-myplugin'));
+PouchDB.plugin(require('pouchdb-envoy'));
 ```

@@ -37,10 +37,11 @@ function tests(dbName, dbType) {
     return db.destroy();
   });
   describe(dbType + ': hello test suite', function () {
-    it('should say hello', function () {
-      return db.sayHello().then(function (response) {
+    it('template', function (done) {
+      done();
+/*      return db.sayHello().then(function (response) {
         response.should.equal('hello');
-      });
+      });*/
     });
   });
 }
