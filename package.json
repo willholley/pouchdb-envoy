@@ -1,6 +1,6 @@
 {
   "name": "pouchdb-envoy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom PouchDB replicator for Cloudant Envoy",
   "main": "index.js",
   "repository": {
